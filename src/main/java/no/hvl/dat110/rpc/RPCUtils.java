@@ -116,14 +116,11 @@ public class RPCUtils {
 	// integer to byte array representation
 	public static byte[] marshallInteger(int x) {
 		
-		byte[] encoded = null;
+		byte[] encoded = new byte[4];
 		
-		// TODO - START 
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - END
+		for(int i = 0; i < 4; i++) {
+			encoded[i] = (byte) ((x >> i*8) & 0xff);
+		}
 		
 		return encoded;
 	}
@@ -133,14 +130,11 @@ public class RPCUtils {
 		
 		int decoded = 0;
 		
-		// TODO - START 
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - END
+		for(int i = 3; i >= 0; i--) {
+			decoded = decoded << 8;
+			decoded += (data[i] & 0xff);
+		}
 		
 		return decoded;
-		
 	}
 }
