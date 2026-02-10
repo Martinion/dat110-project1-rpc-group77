@@ -41,20 +41,25 @@ public class RPCServer {
 		   byte rpcid = 0;
 		   Message requestmsg, replymsg;
 		   
-		   // TODO - START
-		   // - receive a Message containing an RPC request
-		   // - extract the identifier for the RPC method to be invoked from the RPC request
-		   // - extract the method's parameter by decapsulating using the RPCUtils
-		   // - lookup the method to be invoked
-		   // - invoke the method and pass the param
-		   // - encapsulate return value 
-		   // - send back the message containing the RPC reply
-			
-		   if (true)
-				throw new UnsupportedOperationException(TODO.method());
+		   requestmsg = connection.receive();
 		   
-		   // TODO - END
-
+		   byte[] req = requestmsg.getData();
+		   
+		   rpcid = req[0];
+		   
+		   byte[] param = RPCUtils.decapsulate(req);
+		   
+		   RPCRemoteImpl impl = services.get(rpcid);
+		   if (impl == null) {
+			   throw new RuntimeException("RPCServer: Ingenting registrert for rpcid=" + rpcid);
+		   }
+		   
+		   byte [] returnval = impl.invoke(param);
+		   byte [] replypayload = RPCUtils.encapsulate(rpcid, returnval);
+		   
+		   replymsg = new Message(replypayload);
+		   connection.send(replymsg);  
+		   
 			// stop the server if it was stop methods that was called
 		   if (rpcid == RPCCommon.RPIDSTOP) {
 			   stop = true;

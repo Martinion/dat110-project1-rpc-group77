@@ -11,16 +11,12 @@ public class RPCUtils {
 
 		byte[] rpcmsg = null;
 
-		// TODO - START
-		// Encapsulate the rpcid and payload in a byte array according to the RPC message syntax / format
-
 		rpcmsg = new byte[1 + payload.length];
 
 		rpcmsg[0] = rpcid;
 
 		System.arraycopy(payload, 0, rpcmsg, 1, payload.length);
 
-		// TODO - END
 		
 		return rpcmsg;
 	}
@@ -30,14 +26,9 @@ public class RPCUtils {
 
 		byte[] payload = null;
 
-		// TODO - START
-
 		payload = new byte [rpcmsg.length - 1];
 
 		System.arraycopy(rpcmsg, 1, payload, 0, payload.length);
-
-
-		// TODO - END
 		
 		return payload;
 		
@@ -47,12 +38,8 @@ public class RPCUtils {
 	public static byte[] marshallString(String str) {
 		
 		byte[] encoded = null;
-		
-		// TODO - START
 
 		encoded = str.getBytes();
-
-		// TODO - END
 		
 		return encoded;
 	}
@@ -61,13 +48,9 @@ public class RPCUtils {
 	public static String unmarshallString(byte[] data) {
 		
 		String decoded = null; 
-		
-		// TODO - START 
 
 		decoded = new String(data);
 
-		// TODO - END
-		
 		return decoded;
 	}
 	
@@ -75,21 +58,13 @@ public class RPCUtils {
 		
 		byte[] encoded = null;
 		
-		// TODO - START 
-		
 		encoded = new byte[0];
-				
-		// TODO - END
 		
 		return encoded;
 		
 	}
 	
 	public static void unmarshallVoid(byte[] data) {
-		
-		// TODO
-		
-
 		
 	}
 
