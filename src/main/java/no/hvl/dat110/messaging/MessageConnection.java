@@ -47,8 +47,8 @@ public class MessageConnection {
 		byte[] data;
 		
 		try {
-			data = inStream.readNBytes(127);
-			message = new Message(data);
+			data = inStream.readNBytes(128);
+			message = MessageUtils.decapsulate(data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
