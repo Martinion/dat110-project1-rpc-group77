@@ -17,10 +17,11 @@ public class DisplayDevice {
 		
 		displayserver.run();
 		
+		display.write(null);
+		
 		displayserver.stop();
 	
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		
 		
 		System.out.println("Display server stopping ...");
 		

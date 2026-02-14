@@ -38,6 +38,7 @@ public class RPCClient {
 		
 		Message message = new Message(RPCUtils.encapsulate(rpcid, param));
 		
+		//Får nullpointer exception på connection, sliter med å finne årsaken
 		connection.send(message);
 		returnval = RPCUtils.decapsulate(connection.receive().getData());
 		
