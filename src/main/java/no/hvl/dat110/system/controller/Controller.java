@@ -40,8 +40,7 @@ public class Controller  {
 		// connect to sensor and display RPC servers - using the RPCClients
 		// read value from sensor using RPC and write to display using RPC
 			
-	
-		
+
 		stopdisplay.stop();
 		stopsensor.stop();
 	
